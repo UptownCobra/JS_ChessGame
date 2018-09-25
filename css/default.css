@@ -1,0 +1,28 @@
+﻿body {
+  /* Uncomment this to enable scrolling and zooming
+  touch-action: manipulation;
+  */
+}
+#board {
+    width:75%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right:auto;
+}
+.selected {
+    background-color: white !important;
+    color: black !important;
+}
+.board-square {
+    width: 12.2%;
+    height: auto;
+    background-color: black;
+    border: solid white .5px;
+    display: inline-block;
+    color: white;
+}
+
+.valid-move {
+    background-color: grey;
+    color: black;
+}
