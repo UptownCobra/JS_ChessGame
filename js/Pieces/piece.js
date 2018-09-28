@@ -1,5 +1,5 @@
 ﻿
-class piece {
+class Piece {
 	constructor(name, team) {
 		this.name = name;
 		this.team = team;

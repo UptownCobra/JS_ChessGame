@@ -13,10 +13,7 @@
 	makeSquare() {
 		let element = document.createElement('div');
 		element.classList = "board-square";
-		if (this.index % 2 == 0)
-			element.classList.add("black-square");
-		else
-			element.classList.add("white-square");
+		this.setBoardColor(element);
 		//element.addEventListener('click', () => this.setSelected(), 0);
 		element.innerText = this.index;
 		element.id = this.index;
@@ -44,5 +41,20 @@
 	setValidMove() {
 		this.validMove = true;
 		this.squareElement.classList.add('valid-move');
+	}
+
+	setBoardColor(square) {
+		if (this.index < 8 || (this.index >= 16 && this.index < 24) || (this.index >= 32 && this.index < 40) || (this.index >= 48 && this.index < 56)) {
+			if (this.index % 2 == 0)
+				square.classList.add("white-square");
+			else
+				square.classList.add("black-square");
+		}
+		else {
+			if (this.index % 2 == 0)
+				square.classList.add("black-square");
+			else
+				square.classList.add("white-square");
+		}
 	}
 }
