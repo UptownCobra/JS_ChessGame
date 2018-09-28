@@ -13,6 +13,10 @@
 	makeSquare() {
 		let element = document.createElement('div');
 		element.classList = "board-square";
+		if (this.index % 2 == 0)
+			element.classList.add("black-square");
+		else
+			element.classList.add("white-square");
 		//element.addEventListener('click', () => this.setSelected(), 0);
 		element.innerText = this.index;
 		element.id = this.index;

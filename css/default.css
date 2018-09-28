@@ -26,3 +26,12 @@
     background-color: grey;
     color: black;
 }
+
+.white-suqare {
+    background-color: white;
+}
+
+.black-square {
+    background-color: black;
+    color: white;
+}
