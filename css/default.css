@@ -18,7 +18,13 @@
     width: 12.5%;
     height: auto;
     display: inline-block;
-   
+    overflow: hidden;
+}
+
+.board-square img {
+    width: 100%;
+    height: 100%;
+    
 }
 
 .valid-move {
@@ -32,6 +38,6 @@
 }
 
 .black-square {
-    background-color: black;
+    background-color: #383838;
     color: white;
 }

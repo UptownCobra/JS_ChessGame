@@ -4,11 +4,16 @@ class Piece {
 		this.name = name;
 		this.team = team;
 		this.isTaken = false;
-		this.imageLocation = setImageLocation();
+		//this.imageLocation = this.setImageLocation();
 	}
 
-	setImageLocation() {
-		return "/" + this.team + "_" + this.name + ".png";
+	setImage() {
+		return "<img src=\"images/" + this.team + "_" + this.name + ".png\">";
+
+	}
+
+	getValidMoves() {
+		return this.validMoves;
 	}
 
 }
