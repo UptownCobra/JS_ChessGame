@@ -8,21 +8,30 @@
     max-width: 800px;
     margin-left: auto;
     margin-right:auto;
+    border: solid black .2em;
 }
 .selected {
-    background-color: white !important;
+    background-color: lightgray !important;
     color: black !important;
 }
 .board-square {
-    width: 12.2%;
+    width: 12.5%;
     height: auto;
-    background-color: black;
-    border: solid white .5px;
     display: inline-block;
-    color: white;
+   
 }
 
 .valid-move {
-    background-color: grey;
+    background-color: grey !important;
+    color: black !important;
+}
+
+.white-suqare {
+    background-color: white;
     color: black;
+}
+
+.black-square {
+    background-color: black;
+    color: white;
 }
