@@ -19,6 +19,8 @@
     height: auto;
     display: inline-block;
     overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .board-square img {
