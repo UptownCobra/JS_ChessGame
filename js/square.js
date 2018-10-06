@@ -1,12 +1,12 @@
 ﻿class Square {
-	constructor(index) {
+	constructor(index, piece) {
 		this.isSelected = false;
 		this.index = index;
 		this.validMove = false;
 		this.width = document.getElementById('board').clientWidth;
 		this.squareWidth = .125 * this.width;
 		this.squareElement = this.makeSquare();
-
+		this.piece = this.setPiece(piece);
 	};
 
 	// Creates the square div element
@@ -57,4 +57,17 @@
 				square.classList.add("white-square");
 		}
 	}
+
+	setPiece(piece) {
+		if (piece != null) {
+			this.squareElement.style.backgroundImage = piece.image;
+		}
+	}
+	refresh() {
+		if (this.piece != null) {
+			this.piece.refresh(index)
+			setPiece(this.piece);
+		}
+	}
+
 }

@@ -1,10 +1,10 @@
 ﻿
 class Piece {
-	constructor(name, team, location, pieceMap) {
+	constructor(name, team,  pieceMap) {
 		this.name = name;
 		this.team = team;
 		this.isTaken = false;
-		this.location = location
+		this.location 
 		//this.imageLocation = this.setImageLocation();
 	}
 
