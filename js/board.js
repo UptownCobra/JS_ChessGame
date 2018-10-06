@@ -43,5 +43,18 @@ class Board {
 }
 
 
-
+let w = 'white';
+let b = 'black';
 let test = new Board(63);
+let wq = new Queen(w);
+let bq = new Queen(b);
+let wk = new King(w);
+let bk = new King(b);
+let wkn = new Knight(w);
+let bkn = new Knight(b);
+let wb = new Bishop(w);
+let bb = new Bishop(b);
+let wr = new Rook(w);
+let br = new Rook(b);
+let wp = new Pawn(w);
+let bp = new Pawn(b);

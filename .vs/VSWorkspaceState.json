@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\js",
+    "\\js\\Pieces"
   ],
+  "SelectedNode": "\\js\\board.js",
   "PreviewInSolutionExplorer": false
 }
