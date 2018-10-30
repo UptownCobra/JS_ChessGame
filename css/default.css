@@ -13,6 +13,7 @@
 .selected {
     background-color: lightgray !important;
     color: black !important;
+    
 }
 .board-square {
     width: 12.5%;
@@ -42,4 +43,42 @@
 .black-square {
     background-color: #383838;
     color: white;
+}
+
+.black-rook {
+    background-image: url(../images/black_rook.png);
+}
+.white-rook {
+    background-image: url(../images/white_rook.png);
+}
+.black-knight {
+    background-image: url(../images/black_knight.png);
+}
+.white-knight {
+    background-image: url(../images/white_knight.png);
+}
+
+.black-bishop {
+    background-image: url(../images/black_bishop.png);
+}
+.white-bishop {
+    background-image: url(../images/white_bishop.png);
+}
+.black-queen {
+    background-image: url(../images/black_queen.png);
+}
+.white-queen {
+    background-image: url(../images/white_queen.png);
+}
+.black-king {
+    background-image: url(../images/black_king.png);
+}
+.white-king {
+    background-image: url(../images/white_king.png);
+}
+.black-pawn {
+    background-image: url(../images/black_pawn.png);
+}
+.white-pawn {
+    background-image: url(../images/white_pawn.png);
 }

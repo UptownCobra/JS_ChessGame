@@ -6,7 +6,8 @@
 		this.width = document.getElementById('board').clientWidth;
 		this.squareWidth = .125 * this.width;
 		this.squareElement = this.makeSquare();
-		this.piece = this.setPiece(piece);
+		this.piece = piece;
+		this.setPieceBackground(this.piece);
 	};
 
 	// Creates the square div element
@@ -15,7 +16,7 @@
 		element.classList = "board-square";
 		this.setBoardColor(element);
 		//element.addEventListener('click', () => this.setSelected(), 0);
-		element.innerText = this.index;
+		//element.innerText = this.index;
 		element.id = this.index;
 		element.style = "height: " + this.squareWidth + "px;";
 		document.getElementById('board').appendChild(element);
@@ -58,16 +59,22 @@
 		}
 	}
 
-	setPiece(piece) {
+	setPieceBackground(piece) {
 		if (piece != null) {
-			this.squareElement.style.backgroundImage = piece.image;
+			this.squareElement.classList.add(piece.image);
 		}
 	}
+
+	removeBackground() {
+		this.squareElement.classList.remove(this.piece.image);
+	}
+
 	refresh() {
 		if (this.piece != null) {
-			this.piece.refresh(index)
-			setPiece(this.piece);
+			this.piece.refresh(this.index)
+			this.setPieceBackground(this.piece);
 		}
+		
 	}
 
 }
