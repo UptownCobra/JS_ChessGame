@@ -8,6 +8,7 @@ class Piece {
 		this.coords = this.convertToTwoD(this.location);
 		//this.validMoves = this.setValidMoves();
 		//this.imageLocation = this.setImageLocation();
+		this.moveCnt = 0;
 	}
 
 	setImage() {

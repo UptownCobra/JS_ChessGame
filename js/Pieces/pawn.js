@@ -2,7 +2,7 @@
 class Pawn extends Piece {
 	constructor(team,location) {
 		super(name, team, location);
-		this.moveCnt = 0;
+		//this.moveCnt = 0;
 		this.name = "pawn";
 		this.team = team;
 		this.image = this.setImage();
@@ -22,10 +22,10 @@ class Pawn extends Piece {
 			}
 		}
 		else {
-			if (this.team = 'black') {
+			if (this.team == 'black') {
 				this.validMoves.push(this.convertToOneD(this.coords[0] + 1, this.coords[1]));
 			} else {
-				this.validMoves.push(this.convertToOneD(this.coords[0] - 2, this.coords[1]));
+				this.validMoves.push(this.convertToOneD(this.coords[0] - 1, this.coords[1]));
 			}
 		}
 

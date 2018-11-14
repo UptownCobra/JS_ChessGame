@@ -104,6 +104,8 @@ class Board {
 		
 		square.piece = this.boardArray[this.selectedIndex].piece;
 		
+		square.piece.moveCnt++;
+		
 		this.boardArray[this.selectedIndex].squareElement.classList.remove(this.boardArray[this.selectedIndex].piece.image);
 		
 		this.refresh();
