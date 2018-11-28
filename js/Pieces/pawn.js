@@ -16,16 +16,33 @@ class Pawn extends Piece {
 			if (this.team == 'black') {
 				this.validMoves.push(this.convertToOneD(this.coords[0] + 1, this.coords[1]));
 				this.validMoves.push(this.convertToOneD(this.coords[0] + 2, this.coords[1]));
+				this.validMoves.push(this.convertToOneD(this.coords[0] + 1, this.coords[1] + 1));
+				this.validMoves.push(this.convertToOneD(this.coords[0] + 1, this.coords[1] -1));
 			} else {
 				this.validMoves.push(this.convertToOneD(this.coords[0] - 1, this.coords[1]));
 				this.validMoves.push(this.convertToOneD(this.coords[0] - 2, this.coords[1]));
+				this.validMoves.push(this.convertToOneD(this.coords[0] - 1, this.coords[1] + 1));
+				this.validMoves.push(this.convertToOneD(this.coords[0] -1, this.coords[1] -1));
+
 			}
 		}
 		else {
 			if (this.team == 'black') {
-				this.validMoves.push(this.convertToOneD(this.coords[0] + 1, this.coords[1]));
+				if(this.checkBounds(this.coords[0] + 1 ,this.coords[1])) {
+					this.validMoves.push(this.convertToOneD(this.coords[0] + 1, this.coords[1]));
+				} if(this.checkBounds(this.coords[0] + 1 ,this.coords[1] + 1)) {
+					this.validMoves.push(this.convertToOneD(this.coords[0] + 1, this.coords[1] + 1));
+				} if(this.checkBounds(this.coords[0] + 1 ,this.coords[1] - 1)) {
+					this.validMoves.push(this.convertToOneD(this.coords[0] + 1, this.coords[1] -1));
+				}
 			} else {
-				this.validMoves.push(this.convertToOneD(this.coords[0] - 1, this.coords[1]));
+				if(this.checkBounds(this.coords[0] - 1, this.coords[1])) {
+					this.validMoves.push(this.convertToOneD(this.coords[0] - 1, this.coords[1]));
+				}if(this.checkBounds(this.coords[0] - 1, this.coords[1] + 1)) {
+					this.validMoves.push(this.convertToOneD(this.coords[0] - 1, this.coords[1] + 1));
+				} if(this.checkBounds(this.coords[0] - 1, this.coords[1] - 1)) {
+					this.validMoves.push(this.convertToOneD(this.coords[0] -1, this.coords[1] -1));
+				}
 			}
 		}
 

@@ -1,4 +1,4 @@
-﻿'use strict';
+﻿//'use strict';
 
 class Board {
 	constructor(size) {
@@ -9,6 +9,7 @@ class Board {
 		this.boardArray = new Array;
 		this.boardArray = this.initBoard();
 		this.validMoves;
+		this.inValidMoves;
 		
 	
 	};
@@ -85,15 +86,33 @@ class Board {
 		let team = square.piece.team;
 		let moveSquare;
 		let board = this.boardArray;
-		let copy = this.validMoves;
-		this.validMoves = copy.filter(function (i, index) {
+		this.findInvalidMoves(square);
+		let copy = this.validMoves
+		this.validMoves = copy.filter((i, index) => {
+			if(this.inValidMoves.includes(i)){
+				return false;
+			}
 			moveSquare = board[i]
 			if (moveSquare.piece) {
-				if (team != moveSquare.piece.team) {
-					return true;
+				if(square.piece.name == "pawn") {
+					if(square.piece.coords[1] != moveSquare.index % 8) {
+						if (team != moveSquare.piece.team) {
+							return true;
+						}
+					} 
+				}else {
+					if (team != moveSquare.piece.team) {
+						return true;
+					}
 				}
-			} else
-				return true;
+			} else {
+				if(square.piece.name == "pawn") {
+					if(square.piece.coords[1] == moveSquare.index % 8) {
+						return true;
+					}
+				 } else 
+					return true
+				}
 		});
 	}
 
@@ -110,6 +129,92 @@ class Board {
 		
 		this.refresh();
 
+	}
+	findInvalidMoves(square) {
+		this.inValidMoves =[];
+		let invalidMovesAbovePiece = new Array();
+		let invalidMovesBelowPiece = new Array()
+		let pieceIndex = square.piece.location;
+		let pieceY = square.piece.coords[0];
+		let pieceX = square.piece.coords[1];
+		let moves = this.validMoves;
+		let board = this.boardArray;
+		let movesWithPieceOnIt = this.validMoves.filter(function (index) {
+			if(board[index].piece != null) {
+				return true;
+			} else {
+				return false;
+			}
+		})
+		moves.sort();
+		movesWithPieceOnIt.forEach((index) => {
+			let pieceCoords = this.convertToTwoD(index);
+			if(index < pieceIndex){
+				if(pieceCoords[1] == pieceY) { //calculate invalid Moves above piece on the y axis
+					for(let i = pieceCoords[0] - 1 ; i >= 0; i-- ) {
+						invalidMovesAbovePiece.push(this.convertToOneD(pieceCoords[1],i))
+					}
+				} else if (pieceCoords[0] == pieceX) { //calculate invalid Moves above piece on the x axis					
+					for(let i = pieceCoords[1] - 1; i >= 0; i--) {
+						invalidMovesAbovePiece.push(this.convertToOneD(i,pieceCoords[0]))
+					}
+				}else if(pieceCoords[0] > pieceX) { //calulate invalid
+					let tempX = pieceCoords[0] + 1;
+					let tempY = pieceCoords[1] - 1;
+					for(let i = tempX; i <= 8; i++ ){
+						invalidMovesAbovePiece.push(this.convertToOneD(tempY,i));
+						tempY--;
+					}
+				} else if (pieceCoords[0] < pieceX) {
+					let tempX = pieceCoords[0] - 1;
+					let tempY = pieceCoords[1] - 1;
+					for(let i = tempX; i >= 0; i-- ){
+						invalidMovesAbovePiece.push(this.convertToOneD(tempY,i));
+						tempY--;
+					}
+				}
+
+			} else if(index > pieceIndex){
+				if(pieceCoords[1] == pieceY) { //calculate invalid Moves above piece on the y axis
+					for(let i = pieceCoords[0] + 1 ; i < 8; i++ ) {
+						invalidMovesAbovePiece.push(this.convertToOneD(pieceCoords[1],i))
+					}
+				} else if (pieceCoords[0] == pieceX) { //calculate invalid Moves above piece on the x axis					
+					for(let i = pieceCoords[1] + 1; i < 8 ; i++) {
+						invalidMovesAbovePiece.push(this.convertToOneD(i,pieceCoords[0]))
+					}
+				}else if(pieceCoords[0] > pieceX) { //calulate invalid
+					let tempX = pieceCoords[0] + 1;
+					let tempY = pieceCoords[1] + 1;
+					for(let i = tempX; i <= 8; i++ ){
+						invalidMovesBelowPiece.push(this.convertToOneD(tempY,i));
+						tempY++;
+					}
+				} else if (pieceCoords[0] < pieceX) {
+					let tempX = pieceCoords[0] - 1;
+					let tempY = pieceCoords[1] + 1;
+					for(let i = tempX; i >= 0; i-- ){
+						invalidMovesBelowPiece.push(this.convertToOneD(tempY,i));
+						tempY++;
+					}
+				}
+
+			}
+		})
+		this.inValidMoves = invalidMovesAbovePiece.concat(invalidMovesBelowPiece);
+		invalidMovesAbovePiece = [];
+		invalidMovesBelowPiece = [];
+
+		
+	}
+	convertToOneD(num1, num2) {
+		return (num1 * 8) + num2;
+	}
+	convertToTwoD(num) {
+		let coordinates = new Array;
+		coordinates[1] = Math.floor(num / 8);
+		coordinates[0] = num % 8;
+		return coordinates;
 	}
 }
 
